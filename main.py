@@ -37,7 +37,7 @@ def git_mirror(project):
         run(cmd, cwd=path, stderr=DEVNULL, stdout=DEVNULL)
     else:
         print('git clone: %s' % project['path'])
-        cmd = shlex.split('git clone --""" mirror """ %s %s' % (project['repo'],  path))
+        cmd = shlex.split('git clone --mirror %s %s' % (project['repo'],  path))
         run(cmd, stderr=DEVNULL, stdout=DEVNULL)
 
 
