@@ -2,13 +2,11 @@ import requests
 import os
 import shlex
 from subprocess import run, DEVNULL
-from dotenv import load_dotenv
 
-load_dotenv()
 
 HEADERS = {'Private-Token': os.getenv('PRIVATE_TOKEN')}
-GROUP_PATH = os.getenv('GROUP_PATH')
-MIRROR_DIR = os.getenv('MIRROR_DIR')
+GROUP_NAME = os.getenv('GROUP_NAME')
+BACKUP_PATH = os.getenv('BACKUP_PATH')
 
 
 def get_subgroups(group):
@@ -29,7 +27,7 @@ def get_projects(group):
 
 
 def git_mirror(project):
-    path = '%s/%s' % (MIRROR_DIR, project['path'])
+    path = '%s/%s' % (BACKUP_PATH, project['path'])
 
     if os.path.exists(path):
         print('git remote update: %s' % project['path'])
@@ -52,4 +50,4 @@ def go(group):
         go(subgroup)
 
 
-go(GROUP_PATH)
+go(GROUP_NAME)
