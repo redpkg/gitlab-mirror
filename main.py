@@ -1,7 +1,8 @@
-import requests
 import os
 import shlex
-from subprocess import run, DEVNULL
+from subprocess import DEVNULL, run
+
+import requests
 
 
 HEADERS = {'Private-Token': os.getenv('PRIVATE_TOKEN')}
